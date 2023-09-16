@@ -1,6 +1,9 @@
 package com.piryth.shapemonitorapi.appUser;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -8,20 +11,25 @@ import org.springframework.stereotype.Service;
  * Provides services for AppUser
  */
 @Service
-@AllArgsConstructor
-public class AppUserService {
+@RequiredArgsConstructor
+public class AppUserService implements UserDetailsService {
 
-    //private final IAppUserRepository appUserRepository;
+    private final AppUserRepository appUserRepository;
 
     public void addAppUser(AppUser appUser) {
         //return appUserRepository.save(appUser);
     }
 
-    public void getUser(String username) {
-      //  return appUserRepository.getByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Username " + username + " couldn't be found"));
+
+    /**
+     *
+     * @param username the username identifying the user whose data is required.
+     * @return The user details
+     * @throws UsernameNotFoundException
+     */
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return appUserRepository.getReferenceById(username);
+
     }
-
-
-
-
 }

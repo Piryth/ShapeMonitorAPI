@@ -1,4 +1,4 @@
-package com.piryth.shapemonitorapi.appUser;
+package com.piryth.shapemonitorapi.record;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,7 +17,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class AdipometerMeasurements {
+public class Adipometer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

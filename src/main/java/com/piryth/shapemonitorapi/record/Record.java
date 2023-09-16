@@ -1,18 +1,19 @@
-package com.piryth.shapemonitorapi.appUser;
+package com.piryth.shapemonitorapi.record;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.annotation.Nullable;
 import java.util.Date;
 
+/**
+ * A record represents a weight tracker entry
+ */
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
 @Getter
+@Builder
+@AllArgsConstructor
 @Setter
 @Table(name = "record")
 public class Record {
@@ -29,14 +30,17 @@ public class Record {
      *  - the user provides adipometer results
      */
     private float bodyFat;
+
     @Nullable
     @OneToOne
-    private Record record;
+    private Measurements measurements;
 
+    //Skin fold measurment
     @Nullable
     @OneToOne
     private AdipometerMeasurements adipometerMeasurements;
 
     private Date date;
+
 
 }

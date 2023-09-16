@@ -1,0 +1,1 @@
+insert into Role selecrtvalues (001, 'USER'), (002, 'ADMIN')

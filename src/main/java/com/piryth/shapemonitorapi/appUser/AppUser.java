@@ -19,18 +19,23 @@ public class AppUser implements UserDetails {
     @Column(unique = true)
     private String email;
     private String password;
+
     //Contains the whole measurements history
-    @OneToMany
-    private List<Record> history;
-    @Enumerated(EnumType.STRING)
+    //@OneToMany
+    //private List<Record> history;
+
+    @JoinColumn
+    @OneToOne
     private Role role;
-    @Column
-    private Record lastRecord() {
-        return history.get(history.size()-1);
-    }
+
+
+    //@Column
+    //private Record lastRecord() {
+        //return history.get(history.size()-1);
+    //}
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.name()));
+        return List.of(new SimpleGrantedAuthority(role.getName()));
     }
     @Override
     public boolean isAccountNonExpired() {
