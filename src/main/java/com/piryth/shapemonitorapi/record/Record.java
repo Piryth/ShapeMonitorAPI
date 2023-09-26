@@ -38,7 +38,7 @@ public class Record {
     //Skin fold measurment
     @Nullable
     @OneToOne
-    private AdipometerMeasurements adipometerMeasurements;
+    private Adipometer adipometerMeasurements;
 
     private Date date;
 

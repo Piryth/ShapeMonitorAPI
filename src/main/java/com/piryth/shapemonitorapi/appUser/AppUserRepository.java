@@ -11,8 +11,9 @@ import java.util.Optional;
 @Repository
 @Transactional
 public interface AppUserRepository extends JpaRepository<AppUser, String> {
-    Optional<AppUser> findByEmail(String email);
+    //Optional<AppUser> findByEmail(String email);
 
-    @Query("SELECT u FROM AppUser u LEFT JOIN FETCH u.role WHERE u.username= :username")
-    Optional<AppUser> findUserWithRolesByEmail(@Param("username") String username);
+    @Query("SELECT u FROM AppUser u where u.username = :userName")
+    Optional<AppUser> findByUsername(@Param("userName") String username);
+
 }

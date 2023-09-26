@@ -15,6 +15,9 @@ import java.util.List;
 @Entity
 public class AppUser implements UserDetails {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private long id;
+    @Column(unique = true)
     private String username;
     @Column(unique = true)
     private String email;
@@ -24,18 +27,18 @@ public class AppUser implements UserDetails {
     //@OneToMany
     //private List<Record> history;
 
-    @JoinColumn
-    @OneToOne
+    @Enumerated(value = EnumType.STRING)
     private Role role;
-
-
+    private float height;
+    @Enumerated(value = EnumType.STRING)
+    private Gender gender;
     //@Column
     //private Record lastRecord() {
         //return history.get(history.size()-1);
     //}
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.getName()));
+        return List.of(new SimpleGrantedAuthority(role.name()));
     }
     @Override
     public boolean isAccountNonExpired() {

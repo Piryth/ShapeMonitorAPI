@@ -26,7 +26,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth ->
                         auth.requestMatchers(new AntPathRequestMatcher("/shape-monitor/api/auth/**"))
                                 .permitAll().anyRequest().authenticated()
+
                                 )
+                 .logout((logout) -> logout.logoutUrl("/shape-monitor/api/logout").permitAll())
                  .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                  .authenticationProvider(authenticationProvider)
                  .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);

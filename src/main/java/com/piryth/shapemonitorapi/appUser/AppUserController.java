@@ -1,22 +1,32 @@
 package com.piryth.shapemonitorapi.appUser;
 
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/shape-monitor/api/user")
 public class AppUserController {
 
+    private final AppUserService appUserService;
+
     @GetMapping("/get")
-    public ResponseEntity<String> getUsere() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName();
-        return ResponseEntity.ok(username);
+    public ResponseEntity<AppUserDto> getAuthenticatedUser() {
+        return ResponseEntity.ok(appUserService.getAuthenticatedUser());
     }
+
+    @PostMapping("/update")
+    public ResponseEntity<AppUserDto> updateAuthenticatedUser(
+            @RequestBody @NonNull AppUserDto userDto
+    ) {
+            return ResponseEntity.ok(appUserService.updateAuthenticatedUser(userDto));
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<Boolean> deleteAuthenticatedUser(){
+        return ResponseEntity.ok(appUserService.deleteAuthenticatedUser());
+    }
+
 }
