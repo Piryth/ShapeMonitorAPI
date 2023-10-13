@@ -1,9 +1,9 @@
 package com.piryth.shapemonitorapi.record;
 
+import com.piryth.shapemonitorapi.appUser.AppUser;
 import jakarta.persistence.*;
 import lombok.*;
 
-import javax.annotation.Nullable;
 import java.util.Date;
 
 /**
@@ -21,6 +21,8 @@ public class Record {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
+    @OneToOne
+    private AppUser appUser;
     private float weight;
 
     /*
@@ -31,16 +33,18 @@ public class Record {
      */
     private float bodyFat;
 
-    @Nullable
-    @OneToOne
-    private Measurements measurements;
+    //@Nullable
+    //@OneToOne
+    //private Measurements measurements;
 
     //Skin fold measurment
-    @Nullable
-    @OneToOne
-    private Adipometer adipometerMeasurements;
+    //@Nullable
+    //@OneToOne
+    //private Adipometer adipometerMeasurements;
 
     private Date date;
 
+    @Enumerated(EnumType.STRING)
+    private FatMassCalculationType fatMassCalculationType;
 
 }
