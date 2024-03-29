@@ -8,4 +8,10 @@ Mon objectif était de créer une application de fitness. Pourquoi ? Je voyais b
 Je voulais aussi créer une approche tournée objectifs. Le but est de définir un objectif sportif, et d'avoir un objectif à atteindre chaque semaine. L'application calcule ensuite la différence entre l'objectif de base et la réalité, et peut proposer de modifier les objectifs en fonction. J'ai déjà implémenté cette partie sur un autre projet, mais juste en frontend (une sorte de PoC utilisant le local storage).
 
 ## Technologies utilisées
+
+### Hibernate et JPA
+Mon application utilise Hibernate et JPA pour la persistance des données. Les données sont à la base persistées sur une  base PostgreSQL, mais j'avais pour projet de la porter sur MongoDB.
+
+### Spring security
 A travers ce projet, j'ai pu me familiariser avec les bases de Spring Boot et Spring Security. J'ai pu implémenter un système d'authentification JWT, et de sécurité. L'application est en soi assez simple et propose de réaliser des opérations CRUD sur les différentes entitées du modèle.
+
