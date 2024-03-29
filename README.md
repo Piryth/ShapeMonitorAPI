@@ -14,4 +14,6 @@ Mon application utilise Hibernate et JPA pour la persistance des données. Les d
 
 ### Spring security
 A travers ce projet, j'ai pu me familiariser avec les bases de Spring Boot et Spring Security. J'ai pu implémenter un système d'authentification JWT, et de sécurité. L'application est en soi assez simple et propose de réaliser des opérations CRUD sur les différentes entitées du modèle.
+![image](https://github.com/Piryth/ShapeMonitorAPI/assets/94105105/68169d0e-a988-474d-8740-83daa3594aaf)
+
 
