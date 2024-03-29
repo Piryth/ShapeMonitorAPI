@@ -30,8 +30,8 @@ public class RecordService {
         //Step 2 : registering the record to the new user
         AppUserDto userDto = appUserService.getAuthenticatedUser();
         AppUser user = appUserRepository.findByUsername(userDto.username()).orElseThrow();
-        user.getHistory().add(record);
-        record.setAppUser(user);
+        //user.getHistory().add(record);
+        //record.setAppUser(user);
         //Saving the user
         appUserRepository.save(user);
         //Saving the record
