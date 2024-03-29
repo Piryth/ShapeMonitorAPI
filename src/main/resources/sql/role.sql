@@ -1,0 +1,1 @@
+insert into Role values (001, 'USER'), (002, 'ADMIN'),(003,'DEVELOPPER')
